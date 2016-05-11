@@ -1,5 +1,12 @@
 /* Styles go here */
 
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+}
+
 #my-mood {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -112,7 +119,9 @@ md-button .bar_chart {
 .x_right_label,
 .y_top_label,
 .y_bottom_label {
-  fill: rgb(35, 58, 134);
+  fill: black;
+  /*rgb(35, 58, 134)*/
+  letter-spacing: .020em;
 }
 
 .tooltip {

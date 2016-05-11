@@ -323,7 +323,12 @@ app.directive('moodMapBarChartReflection', function () {
 
       var percent = d3.format('%');
       //var width = 500
+
       //var height = 20
+
+      // Dimensions
+      var dimensions = ['Valence', 'Arousal'];
+
       var svg = d3.select("#chart_reflection")
         .append('svg')
         .attr('width', width + margins.left + margins.right + legendPanel.width)
@@ -335,8 +340,9 @@ app.directive('moodMapBarChartReflection', function () {
         .domain([0, 1])
         .range([0, width]);
 
+
       var yScale = d3.scale.ordinal()
-        .domain(['Arousal', 'Valence'])
+        .domain(dimensions)
         .rangeRoundBands([0, height], .1);
 
       var rect1 = svg.append('rect')
@@ -345,7 +351,7 @@ app.directive('moodMapBarChartReflection', function () {
           return xScale(0);
         })
         .attr('y', function (d, i) {
-          return yScale('Arousal');
+          return yScale(dimensions[0]);
         })
         .attr('height', function (d) {
           return yScale.rangeBand();
@@ -357,27 +363,28 @@ app.directive('moodMapBarChartReflection', function () {
           return xScale(0);
         })
         .attr('y', function (d, i) {
-          return yScale('Valence');
+          return yScale(dimensions[1]);
         })
         .attr('height', function (d) {
           return yScale.rangeBand();
         })
 
-      var valence_level = svg.selectAll("text")
+
+      var valence_level = svg.selectAll("text1")
         .data([1, 3])
         .enter()
         .append('text')
-        .style('fill', 'blue')
-        .attr('x', function (d) {
-          return xScale(0);
-        })
-        .attr('y', function (d, i) {
-          return yScale('Valence');
-        })
-        .attr('height', function (d) {
-          return yScale.rangeBand();
-        });
+        .attr('x', 3)
+        .style('fill', 'white');
 
+
+
+      var arousal_level = svg.selectAll("text2")
+        .data([1, 3])
+        .enter()
+        .append('text')
+        .attr('x', 3)
+        .style('fill', 'white');
 
       var xAxis = d3.svg.axis()
         .scale(xScale)
@@ -398,45 +405,52 @@ app.directive('moodMapBarChartReflection', function () {
         .call(yAxis);
 
 
-      var colours = d3.scale.category10();
+      var colors = d3.scale.category10();
 
       svg.append('rect')
-        .attr('fill', '#ddd')
-        .attr('width', 160)
-        .attr('height', 30 * 2)
-        .attr('x', width + margins.left)
+        //.attr('fill', '#ddd')
+        .style("stroke", '#ddd')
+        .style("fill", "none")
+        .style("stroke-width", 1)
+        .attr('width', 70)
+        .attr('height', 23 * 2)
+        .attr('x', width + margins.left + 10)
         .attr('y', 0);
 
       ['Positive', 'Negative'].forEach(function (s, i) {
         svg.append('text')
-          .attr('fill', 'rgb(35, 58,134)')
-          .attr('x', width + margins.left + 8)
-          .attr('y', i * 24 + 24)
+          .attr('fill', 'black')
+          .attr('x', width + margins.left + 30)
+          .attr('y', i * 24 + 15)
           .text(s);
         svg.append('rect')
-          .attr('fill', colours(i))
-          .attr('width', 20)
-          .attr('height', 20)
-          .attr('x', width + margins.left + 70)
+          .attr('fill', colors(i))
+          .attr('width', 10)
+          .attr('height', 10)
+          .attr('x', width + margins.left + 15)
           .attr('y', i * 24 + 6);
       });
 
       $scope.$watch('data', function (progress) {
-        var arousal_level = Math.round(progress * 100)
+        // Valence
+        // ----------------
         rect1.attr({
-          width: xScale(progress)
-        });
+            width: xScale(Math.abs(progress.yValue))
+          })
+          .style('fill', progress.yValue >= 0 ? colors(0) : colors(1))
+        valence_level.attr("transform", "translate(" + xScale(Math.abs(progress.yValue)) + "," + 20 + ")");
+        valence_level.text(Math.round(progress.yValue * 100));
 
-
-        valence_level.attr("transform", "translate(" + arousal_level + "," + 20 + ")");
-        valence_level
-          .text(arousal_level)
-          .style("color", "yellow");
-
-
+        // Arousal
+        // ----------------
         rect2.attr({
-          width: xScale(progress)
-        });
+            width: xScale(Math.abs(progress.xValue))
+          })
+          .style('fill', progress.xValue >= 0 ? colors(0) : colors(1))
+
+        arousal_level.attr("transform", "translate(" + xScale(Math.abs(progress.xValue)) + "," + 50 + ")");
+        arousal_level.text(Math.round(progress.xValue * 100));
+
 
       })
     }
