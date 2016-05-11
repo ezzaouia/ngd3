@@ -1,0 +1,174 @@
+/* Styles go here */
+
+#my-mood {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+}
+
+svg {
+  /*background-color: #eee;*/
+  background: red;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+  /* Standard syntax */
+}
+
+svg text {
+  font: 10px sans-serif;
+}
+
+svg text {
+  color: red;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #999;
+}
+
+.tick {
+  font: 10px sans-serif;
+}
+
+div .chart {
+  width: 500px;
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: rgb(182, 215, 187);
+  text-align: right;
+  padding: 6px;
+  margin: 1px;
+  /*color: white;*/
+}
+
+
+/* focus */
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+focus_text {
+  font: 10px sans-serif;
+  fill: rgb(50, 107, 132);
+}
+
+.focus_circle {
+  fill: red;
+  /* rgba(255, 255, 255, 0.7);*/
+  stroke: rgba(0, 0, 0, 0.09);
+  stroke-width: 1.5px;
+}
+
+md-button .bar_chart {
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.bar_chart_level {
+  border-radius: 80%;
+  padding: 5px;
+  text-align: center;
+  background: rgb(50, 107, 132);
+  -moz-border-radius: 50%;
+  font-size: 1.1em;
+  color: white;
+}
+
+.stop-left {
+  stop-color: #3f51b5;
+  /* Indigo */
+}
+
+.stop-right {
+  stop-color: #009688;
+  /* Teal */
+}
+
+.filled {
+  background-color: url(#mainGradient);
+}
+
+.outlined {
+  fill: none;
+  stroke: url(#mainGradient);
+  stroke-width: 4;
+}
+
+.x_left_label,
+.x_right_label,
+.y_top_label,
+.y_bottom_label {
+  fill: rgb(35, 58, 134);
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 3px;
+  margin-top: -20px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+  border-radius: 2px;
+  color: #fff;
+}
+
+
+/* Creates a small triangle extender for the tooltip */
+
+.tooltip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 11;
+  width: 100%;
+  line-height: 1;
+  color: #ddd;
+  content: "\25bc";
+  position: absolute;
+  text-align: center;
+  margin-left: -48px;
+  margin-top: 13px;
+}
+
+
+/* Style northward tooltips differently */
+
+.tooltip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.svg_chart_reflection {
+  background-color: aqua;
+}
+
+.svg_chart_reflection {
+  background: #b0e0f8;
+  margin: 5px;
+}
+
+.svg_chart_reflection rect {
+  stroke: white;
+  fill: steelblue;
+}
+
+.svg_chart_reflection text {
+  fill: white;
+}

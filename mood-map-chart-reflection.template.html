@@ -1,0 +1,10 @@
+<div class="chart">
+  <span><span ng-if="XY.xValue >= 0">Positif</span><span ng-if="XY.xValue < 0">Negatif</span> Valence (%):</span>
+  <div style="width: {{XY.xValue * 100 | abs | round}}%;">
+    <span class="bar_chart_level">{{ XY.xValue * 100 | abs | round }}</span>
+  </div>
+  <span><span ng-if="XY.yValue >= 0">Positif</span><span ng-if="XY.yValue < 0">Negatif</span> Arousal (%):</span>
+  <div style="width: {{XY.yValue * 100 | abs | round}}%;">
+    <span class="bar_chart_level">{{ XY.yValue * 100 | abs | round }}</span>
+  </div>
+</div>
