@@ -8,16 +8,49 @@
 </head>
 
 <body ng-controller="MainCtrl" ng-init="progress=50">
-  <h1>Templating!!!</h1>
 
-  <div id="chart_reflection">
-    <mood-map-bar-chart-reflection data="XY"></mood-map-bar-chart-reflection>
-  </div>
+  <md-content>
 
-  <div id="mood-map-chart">
-    <!--    <mood-map-chart-reflection></mood-map-chart-reflection>-->
-    <mood-map-chart></mood-map-chart>
-  </div>
+
+    <h5 class="md-toolbar-text">C’est quoi votre sentiment avant le début de la séance ?
+    </h5>
+
+    <div layout="row" layout-align="center center">
+
+      <!--------------------------------
+        Start MoodMap
+        -------------------------------->
+      <section flex="50">
+        <div id="chart_reflection">
+          <mood-map-bar-chart-reflection data="XY" bMoodMapClicked="bMoodMapClicked"></mood-map-bar-chart-reflection>
+        </div>
+        <div id="mood-map-chart">
+          <!--    <mood-map-chart-reflection></mood-map-chart-reflection>-->
+          <mood-map-chart></mood-map-chart>
+        </div>
+      </section>
+      <!--------------------------------
+        End MoodMap
+        -------------------------------->
+
+
+      <!--------------------------------
+                 Start Discrete Emotions
+       -------------------------------->
+      <section flex="" style="padding-left: 20px;">
+        <discrete-emotion></discrete-emotion>
+      </section>
+      <!--------------------------------
+        End Discrete Emotions
+        -------------------------------->
+    </div>
+
+    <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-raised md-primary center" ng-click="submitEmotion(discrte_emotions, $event)">Submit</md-button>
+    </div>
+
+  </md-content>
+
 
   <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
   <script data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular-resource.js"></script>

@@ -1,0 +1,17 @@
+<div layout="row" ng-repeat="emotion in discrte_emotions">
+  <md-tooltip md-direction="top">
+    <span class="md-content">{{emotion.emotion_name | capitalize}}</span>
+  </md-tooltip>
+  <div flex="10">
+    <md-button class="md-icon-button md-body-1">
+      <ng-md-icon icon="{{emotion.emotion_icon}}" style="fill: #abcdef;" size="32"></ng-md-icon>
+    </md-button>
+  </div>
+  <div flex style="padding-left: 20px;">
+    <md-slider flex class="md-primary" md-discrete ng-model="emotion.emotion_level" step="1" min="0" max="100" aria-label="level">
+    </md-slider>
+  </div>
+  <div flex="10" layout layout-align="center center">
+    <span class="md-content">{{emotion.emotion_level}}</span>
+  </div>
+</div>

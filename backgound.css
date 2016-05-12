@@ -1,0 +1,9 @@
+background: red;
+/* For browsers that do not support gradients */
+background: -webkit-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+/* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+/* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
+/* For Firefox 3.6 to 15 */
+background: linear-gradient(rgb(142, 193, 169), rgb(237, 245, 212));
